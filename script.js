@@ -45,8 +45,14 @@ $("#answer4").on("click", function() {
 function checkFunction(input) {
   if (input === questions[questionCount].answer) {
     $("#answer").text("Nice Work!");
+    setTimeout(function() {
+      $("#answer").text("");    
+  }, 1000);
   } else {
     $("#answer").text("Better luck next question");
+    setTimeout(function() {
+      $("#answer").text("");    
+  }, 1000);
     time = time - 15;
   }
 
@@ -58,13 +64,12 @@ function checkFunction(input) {
     $("#quiz").empty();
     $(".timer").empty();
     $("#result").show();
-    showScore(time);
+    scoreFunction(time);
   }
 }
 
 ///Timer gen
 var time = 90;
-var timer;
 
 function timerFunction() {
   if (time > 0) {
@@ -75,10 +80,12 @@ function timerFunction() {
     $("#quiz").empty();
     $(".timer").empty();
     $("#result").show();
-    showScore(time);
+    scoreFunction(time);
   }
 }
-function showScore(time) {
+
+///show score
+function scoreFunction(time) {
   $("#finishHead").text("Finished!");
   $("#finishScore").text("Final score: " + time);
   $("#submit").text("See where you rank!");
