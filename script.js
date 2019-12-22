@@ -96,11 +96,31 @@ $(document).ready(function() {
     $("#finishScore").text("Final score: " + time);
     $("#submit").text("See where you rank!");
   }
-
+postSocre()
   /// score and initials into storage
   $("#submit").on("click", function() {
     var user = initials.value;
     var timeScore = time;
     localStorage.setItem(user, timeScore);
+    postScore();
+  });
+
+  $("#highscoreHead").text("HIGH SCORES");
+  $("#clear").text("Clear Scores");
+  $("#newGame").text("New Game");
+
+  function postSocre() {
+    for (var i = 0; i < localStorage.length; ++i) {
+      var id = localStorage.key(i);
+      var score = localStorage.getItem(id);
+      var l1 = document.createElement("li");
+      l1.innerHTML = id + " - " + score;
+      $("#highScores").append(l1);
+    }
+  }
+
+  $("#clear").on("click", function() {
+    localStorage.clear();
+    $("#highScores").empty();
   });
 });
