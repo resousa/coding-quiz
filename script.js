@@ -1,3 +1,12 @@
+///variables
+var questionCount = 0;
+var time = 90;
+
+///varialbes for the local storage
+var initials = document.querySelector('#initials');
+var initialKey = 'initials';
+var scoreKey = 'score';
+
 /// Intro screen
 $("#introHead").text("The Coding Quiz!");
 $("#introBody").text(
@@ -18,8 +27,6 @@ function startQuiz() {
 }
 
 ///Question gen
-var questionCount = 0;
-
 function questionStart() {
   $("#question").text(questions[questionCount].title);
   $("#answer1").text(questions[questionCount].choices[0]);
@@ -53,7 +60,7 @@ function checkFunction(input) {
     setTimeout(function() {
       $("#answer").text("");    
   }, 1000);
-    time = time - 15;
+    time -= 15;
   }
 
   if (questionCount < questions.length - 1) {
@@ -69,8 +76,6 @@ function checkFunction(input) {
 }
 
 ///Timer gen
-var time = 90;
-
 function timerFunction() {
   if (time > 0) {
     $("#counter").text(time);
@@ -90,3 +95,11 @@ function scoreFunction(time) {
   $("#finishScore").text("Final score: " + time);
   $("#submit").text("See where you rank!");
 }
+
+/// score and initials into storage 
+$("#submit").on('click', function () {
+  var user = initials.value;
+  var timeScore = time;
+  localStorage.setItem(user, timeScore);
+});
+
