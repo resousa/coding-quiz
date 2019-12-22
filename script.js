@@ -2,7 +2,7 @@ $(document).ready(function() {
   ///variables
   var questionCount = 0;
   var time = 90;
-
+  
   ///varialbes for the local storage
   var initials = document.querySelector("#initials");
   var initialKey = "initials";
@@ -37,6 +37,7 @@ $(document).ready(function() {
   }
 
   /// Answer check
+  
   $("#answer1").on("click", function() {
     checkFunction("1");
   });
@@ -49,6 +50,7 @@ $(document).ready(function() {
   $("#answer4").on("click", function() {
     checkFunction("4");
   });
+  $('.btn').mouseup(function() { this.blur() })
 
   function checkFunction(input) {
     if (input === questions[questionCount].answer) {
