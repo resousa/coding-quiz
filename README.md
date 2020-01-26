@@ -1,5 +1,5 @@
 # coding-quiz
-
+[Code Quiz](https://resousa.github.io/coding-quiz/)
 ## Table of contents
 - [General info](#Info)
 - [Technologies](#Technologies)
